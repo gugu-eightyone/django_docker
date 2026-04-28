@@ -82,8 +82,13 @@ WSGI_APPLICATION = 'django_docker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rdsdb',
+        'USER': 'django',
+        'PASSWORD': os.getenv('LOCAL_RDSBD_PASSWORD'),
+        'HOST': 'django-post.c340w8icoxi6.ap-northeast-2.rds.amazonaws.com',
+        # 'HOST': 'localhost',  # 로콜에서 할 당시
+        'PORT': '3306',
     }
 }
 
